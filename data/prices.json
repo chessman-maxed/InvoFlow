@@ -1,0 +1,142 @@
+[
+  {
+    "id": "srv-001",
+    "name": "Logo Design",
+    "category": "Branding",
+    "unit": "project",
+    "price": 5000
+  },
+  {
+    "id": "srv-002",
+    "name": "Brand Guidelines",
+    "category": "Branding",
+    "unit": "project",
+    "price": 12000
+  },
+  {
+    "id": "srv-003",
+    "name": "Business Card Design",
+    "category": "Graphic Design",
+    "unit": "design",
+    "price": 1500
+  },
+  {
+    "id": "srv-004",
+    "name": "Poster Design",
+    "category": "Graphic Design",
+    "unit": "design",
+    "price": 2500
+  },
+  {
+    "id": "srv-005",
+    "name": "Brochure Design",
+    "category": "Graphic Design",
+    "unit": "design",
+    "price": 4000
+  },
+  {
+    "id": "srv-006",
+    "name": "Flyer Design",
+    "category": "Graphic Design",
+    "unit": "design",
+    "price": 2000
+  },
+  {
+    "id": "srv-007",
+    "name": "Website Landing Page",
+    "category": "Web Development",
+    "unit": "page",
+    "price": 15000
+  },
+  {
+    "id": "srv-008",
+    "name": "Website Development (Full)",
+    "category": "Web Development",
+    "unit": "project",
+    "price": 35000
+  },
+  {
+    "id": "srv-009",
+    "name": "E-commerce Website Setup",
+    "category": "Web Development",
+    "unit": "project",
+    "price": 45000
+  },
+  {
+    "id": "srv-010",
+    "name": "Website Maintenance",
+    "category": "Web Development",
+    "unit": "month",
+    "price": 8000
+  },
+  {
+    "id": "srv-011",
+    "name": "Social Media Post Design",
+    "category": "Social Media",
+    "unit": "post",
+    "price": 800
+  },
+  {
+    "id": "srv-012",
+    "name": "Social Media Management",
+    "category": "Social Media",
+    "unit": "month",
+    "price": 18000
+  },
+  {
+    "id": "srv-013",
+    "name": "Short Video / Reel Editing",
+    "category": "Video",
+    "unit": "video",
+    "price": 2500
+  },
+  {
+    "id": "srv-014",
+    "name": "Corporate Video Editing",
+    "category": "Video",
+    "unit": "video",
+    "price": 10000
+  },
+  {
+    "id": "srv-015",
+    "name": "Product Photography",
+    "category": "Marketing",
+    "unit": "day",
+    "price": 12000
+  },
+  {
+    "id": "srv-016",
+    "name": "SEO Optimization Package",
+    "category": "Marketing",
+    "unit": "month",
+    "price": 15000
+  },
+  {
+    "id": "srv-017",
+    "name": "Business Card Printing (100 pcs)",
+    "category": "Printing",
+    "unit": "pack",
+    "price": 600
+  },
+  {
+    "id": "srv-018",
+    "name": "Poster Printing (A3)",
+    "category": "Printing",
+    "unit": "piece",
+    "price": 150
+  },
+  {
+    "id": "srv-019",
+    "name": "Flyer Printing (1000 pcs)",
+    "category": "Printing",
+    "unit": "pack",
+    "price": 2500
+  },
+  {
+    "id": "srv-020",
+    "name": "Brochure Printing (500 pcs)",
+    "category": "Printing",
+    "unit": "pack",
+    "price": 4500
+  }
+]
