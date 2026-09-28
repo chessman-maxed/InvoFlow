@@ -1,8 +1,6 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
 import { ConversationExtraction } from "./types";
 
-const apiKey = process.env.GEMINI_API_KEY || "";
-const genAI = new GoogleGenerativeAI(apiKey);
+const apiKey = process.env.OPENROUTER_API_KEY || "";
 
 const SYSTEM_INSTRUCTION = `You are an AI assistant specialized in analyzing client-freelancer conversation messages to extract structured invoice requirements.
 
@@ -43,7 +41,7 @@ export async function extractInvoiceDetails(
   conversationMessage: string
 ): Promise<ConversationExtraction> {
   if (!apiKey) {
-    throw new Error("GEMINI_API_KEY is not configured.");
+    throw new Error("OPENROUTER_API_KEY is not configured.");
   }
 
   if (!conversationMessage || !conversationMessage.trim()) {
@@ -53,16 +51,35 @@ export async function extractInvoiceDetails(
   }
 
   try {
-    const model = genAI.getGenerativeModel({
-      model: "gemini-3.8-flash",
-      generationConfig: {
-        responseMimeType: "application/json",
+    const prompt = `${SYSTEM_INSTRUCTION}\n\nClient Conversation Message:\n"${conversationMessage}"`;
+
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        model: "google/gemini-2.5-flash",
+        messages: [
+          {
+            role: "user",
+            content: prompt,
+          },
+        ],
+        response_format: { type: "json_object" },
+        max_tokens: 1000,
+        reasoning: { max_tokens: 0 },
+      }),
     });
 
-    const prompt = `${SYSTEM_INSTRUCTION}\n\nClient Conversation Message:\n"${conversationMessage}"`;
-    const result = await model.generateContent(prompt);
-    const text = result.response.text();
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`OpenRouter API error (${response.status}): ${errorText}`);
+    }
+
+    const data = await response.json();
+    const text = data.choices?.[0]?.message?.content || "";
 
     const cleanedText = text.replace(/```json/g, "").replace(/```/g, "").trim();
     const parsedData: ConversationExtraction = JSON.parse(cleanedText);
@@ -75,11 +92,12 @@ export async function extractInvoiceDetails(
       notes: parsedData.notes || undefined,
     };
   } catch (error) {
-    console.error("Error extracting invoice details with Gemini:", error);
+    console.error("Error extracting invoice details with OpenRouter:", error);
     throw new Error(
       error instanceof Error
-        ? `Gemini extraction failed: ${error.message}`
+        ? `OpenRouter extraction failed: ${error.message}`
         : "Failed to parse conversation details."
     );
   }
 }
+

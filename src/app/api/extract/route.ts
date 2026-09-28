@@ -18,9 +18,9 @@ export async function POST(req: NextRequest) {
     const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred.";
     
     // Check if error is due to missing API key
-    if (errorMessage.includes("GEMINI_API_KEY")) {
+    if (errorMessage.includes("OPENROUTER_API_KEY")) {
       return NextResponse.json(
-        { error: "Server configuration error: GEMINI_API_KEY is not set." },
+        { error: "Server configuration error: OPENROUTER_API_KEY is not set." },
         { status: 500 }
       );
     }

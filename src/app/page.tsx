@@ -494,7 +494,7 @@ export default function Home() {
                             <span className="text-xs sm:text-sm font-bold text-[#0B0B0D]">{row.name}</span>
                             <span className="text-[11px] text-[#6B6B6B] flex items-center gap-1">
                               <span className="w-1.5 h-1.5 rounded-full bg-[#0B0B0D]"></span>
-                              Catalog matched ({row.unit})
+                              Custom item ({row.unit})
                             </span>
                           </div>
 

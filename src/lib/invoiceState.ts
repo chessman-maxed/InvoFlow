@@ -20,12 +20,12 @@ export function applyConversationToInvoice(
   const changes: InvoiceChange[] = [];
 
   for (const extractedItem of extraction.items) {
-    const match = matchCatalogItem(extractedItem.name);
-    
-    // Fallback item name and ID if no catalog match is found
-    const targetId = match ? match.item.id : extractedItem.name.toLowerCase().replace(/\s+/g, "-");
-    const targetName = match ? match.item.name : extractedItem.name;
-    const targetUnit = match ? match.item.unit : "unit";
+    const rawName = extractedItem.name.trim();
+    const match = matchCatalogItem(rawName, 0.4); // strict match only if exact catalog keyword
+
+    const targetId = rawName.toLowerCase().replace(/\s+/g, "-");
+    const targetName = rawName; // Always keep exact text typed by user
+    const targetUnit = match ? match.item.unit : "item";
     const targetUnitPrice = match ? match.item.price : 0;
     const targetCategory = match ? match.item.category : undefined;
 
